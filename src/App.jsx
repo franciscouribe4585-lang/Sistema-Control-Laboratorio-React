@@ -12,13 +12,17 @@ function App() {
   };
 
   const actualizarCantidad = (index, cambio) => {
-    const nuevosMateriales = [...materiales];
+  const nuevosMateriales = [...materiales];
 
-    nuevosMateriales[index].cantidad =
-      parseInt(nuevosMateriales[index].cantidad) + cambio;
+  let nuevaCantidad =
+    parseInt(nuevosMateriales[index].cantidad) + cambio;
 
-    setMateriales(nuevosMateriales);
-  };
+  if (nuevaCantidad < 0) nuevaCantidad = 0;
+
+  nuevosMateriales[index].cantidad = nuevaCantidad;
+
+  setMateriales(nuevosMateriales);
+};
 
   return (
     <div>
