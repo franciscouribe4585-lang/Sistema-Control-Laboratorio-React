@@ -8,8 +8,14 @@ function ListaInventario({ materiales }) {
           <li key={index}>
             {material.nombre} - {material.cantidad}
 
-            {material.cantidad <= 5 && (
+            {material.cantidad <= 2 && (
               <span style={{ color: "red", marginLeft: "10px" }}>
+                🔴 Stock crítico
+              </span>
+            )}
+
+            {material.cantidad > 2 && material.cantidad <= 5 && (
+              <span style={{ color: "orange", marginLeft: "10px" }}>
                 ⚠ Bajo stock
               </span>
             )}

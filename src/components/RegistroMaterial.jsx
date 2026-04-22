@@ -5,16 +5,21 @@ function RegistroMaterial({ agregarMaterial }) {
   const [cantidad, setCantidad] = useState("");
 
   const manejarEnvio = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    agregarMaterial({
-      nombre,
-      cantidad
-    });
+  if (!nombre || !cantidad) {
+    alert("Todos los campos son obligatorios");
+    return;
+  }
 
-    setNombre("");
-    setCantidad("");
-  };
+  agregarMaterial({
+    nombre,
+    cantidad
+  });
+
+  setNombre("");
+  setCantidad("");
+};
 
   return (
     <div>
