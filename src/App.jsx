@@ -1,7 +1,8 @@
 import { useState } from "react";
+import "./App.css";
+
 import RegistroMaterial from "./components/RegistroMaterial";
 import ListaInventario from "./components/ListaInventario";
-import ActualizarCantidad from "./components/ActualizarCantidad";
 
 function App() {
 
@@ -11,32 +12,66 @@ function App() {
     setMateriales([...materiales, material]);
   };
 
-  const actualizarCantidad = (index, cambio) => {
-  const nuevosMateriales = [...materiales];
-
-  let nuevaCantidad =
-    parseInt(nuevosMateriales[index].cantidad) + cambio;
-
-  if (nuevaCantidad < 0) nuevaCantidad = 0;
-
-  nuevosMateriales[index].cantidad = nuevaCantidad;
-
-  setMateriales(nuevosMateriales);
-};
-
   return (
     <div>
 
-      <h1>Sistema de Inventario de Laboratorio</h1>
+      {/* ENCABEZADO */}
+      <header className="header">
 
-      <RegistroMaterial agregarMaterial={agregarMaterial} />
+        <h1>
+          Sistema de Control de Material de Laboratorio Clínico
+        </h1>
 
-      <ListaInventario materiales={materiales} />
+      </header>
 
-      <ActualizarCantidad
-        materiales={materiales}
-        actualizarCantidad={actualizarCantidad}
-      />
+      {/* MENÚ */}
+      <div className="menu-contenedor">
+
+        <div className="card-menu">
+          <h2>Actividades Realizadas</h2>
+
+          <p>
+            Scrum, backlog, Sprint, React y GitHub.
+          </p>
+        </div>
+
+        <div className="card-menu">
+          <h2>Sistema Implementado</h2>
+
+          <p>
+            Registro de materiales e inventario.
+          </p>
+        </div>
+
+        <div className="card-menu">
+          <h2>Código Fuente</h2>
+
+          <a
+            href="https://github.com/franciscouribe4585-lang/Sistema-Control-Laboratorio-React"
+            target="_blank"
+          >
+            Ver GitHub
+          </a>
+        </div>
+
+        <div className="card-menu">
+          <h2>Modificaciones</h2>
+
+          <p>
+            Alertas, validaciones y mejoras visuales.
+          </p>
+        </div>
+
+      </div>
+
+      {/* SISTEMA */}
+      <div className="sistema">
+
+        <RegistroMaterial agregarMaterial={agregarMaterial} />
+
+        <ListaInventario materiales={materiales} />
+
+      </div>
 
     </div>
   );
